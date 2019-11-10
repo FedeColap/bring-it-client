@@ -1,0 +1,49 @@
+.butSub, .butCan {
+    display: block;
+    margin: auto;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+fieldset {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    text-align: center;
+}
+label, input, select {
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+}
+.spacer{
+
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+/*for the phones*/
+@media screen and (max-width: 510px) {
+    fieldset {
+        width: 85%;
+    }
+    
+}
+/* for tablets */
+@media screen and (min-width: 510px) {
+    fieldset {
+        width: 75%;
+    }
+    
+}
+/* for computers */
+@media screen and (min-width: 1400px) {
+  fieldset {
+    width: 30%;
+  }
+    
+} 

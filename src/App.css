@@ -1,0 +1,75 @@
+* { 
+    font-family: 'Cantarell', sans-serif;
+}
+body {
+    margin: 0;
+}
+footer{
+    display: block;
+    background-color: coral;
+    margin: 0;
+    padding:1%;
+}
+.home {
+    display: block;
+    margin: auto;
+}
+nav {
+    background-color: coral;
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+}
+.navInteraction {
+    background-color: green;
+    display:inline-block;
+    align-self: stretch;
+    /*watch out here, trova il modo di centrarli in altezza*/
+    padding: 15px;
+    font-size: 20px;
+}
+header {
+    background-color: gray;
+    align-self: stretch;
+    font-size: 30px;
+    padding: 10px;
+}
+main {
+    background-color: bisque;
+    border: 13px dotted #1C6EA4;
+    margin: auto;
+    width: 70%;
+    font-size: 20px;
+    line-height: 1.6;
+    padding: 2%;
+}
+.spacer{
+
+    display: block;
+    width: 100%;
+    height: 100px;
+}
+
+/*for the phones*/
+@media screen and (max-width: 510px) {
+    .navInteraction{
+        font-size: 14px;
+        display: flex;
+        flex-direction: column;
+    }
+    header {
+        font-size: 20px;
+        padding: 5px;
+    }
+    
+}
+/* for tablets */
+@media screen and (min-width: 510px) {
+    
+    
+}
+/* for computers */
+@media screen and (min-width: 1400px) {
+  
+    
+} 
