@@ -25,7 +25,7 @@ export default class SearchPage extends Component {
   render() {
     return (
       <section className='SearchPage'>
-        <h1>Seach for available users</h1>
+        <h1 className="fancy">Seach for available users</h1>
         <h4>Please answer these question to find out if someone is traveling to a foreign Country and is available to bring you something back.</h4>
         <SearchForm
         //   onLoginSuccess={this.handleLoginSuccess}

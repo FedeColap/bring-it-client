@@ -33,9 +33,9 @@ export default class LoginForm extends Component {
     handleSubmitJwtAuth = e => {
         e.preventDefault()
         this.setState({ error: null })
-        const nickname = e.target.nick_name.value;
+        const username = e.target.user_name.value;
         const password = e.target.password.value;
-        console.log('Validating Name: ', nickname )
+        console.log('Validating Name: ', username )
         console.log('ValidatingPassword: ', password);
         this.props.onLoginSuccess()
     }
@@ -47,17 +47,18 @@ export default class LoginForm extends Component {
         className='LoginForm'
         onSubmit={this.handleSubmitJwtAuth}
       >
+       
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
-        <div className='nick_name'>
-          <label htmlFor='LoginForm__nick_name'>
+        <div className='user_name'>
+          <label htmlFor='LoginForm__user_name'>
             Nickname
           </label>
           <input
             required
-            name='nick_name'
-            id='LoginForm__nick_name'>
+            name='user_name'
+            id='LoginForm__user_name'>
           </input>
         </div>
         <div className='password'>
@@ -71,6 +72,7 @@ export default class LoginForm extends Component {
             id='LoginForm__password'>
           </input>
         </div>
+        
         <button type='submit'>
           Login
         </button>

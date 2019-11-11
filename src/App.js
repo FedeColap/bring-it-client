@@ -8,6 +8,7 @@ import LoginPage from './routes/LoginPage/LoginPage'
 import SearchPage from './routes/SearchPage/SearchPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
 import './App.css'
+import './mainForm2.css'
 
 class App extends Component {
   state = { error: null }
@@ -61,7 +62,7 @@ class App extends Component {
         </main>
         <div className="spacer"></div>
         <footer>
-          <p>2019 | Bring it (Please)</p>
+          <h4 className="footer">2019 | Bring it (Please)</h4>
         </footer>
       </div>
     )

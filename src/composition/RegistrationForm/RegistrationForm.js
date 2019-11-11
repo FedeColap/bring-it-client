@@ -13,9 +13,9 @@ export default class RegistrationForm extends Component {
     e.preventDefault()
     // const { full_name, nick_name, user_name, password } = ev.target
     this.props.onRegistrationSuccess()
-    const nickname = e.target.nick_name.value;
+    const username = e.target.user_name.value;
     const password = e.target.password.value;
-    console.log('Name: ', nickname);
+    console.log('Name: ', username);
     console.log('Password: ', password);
 
     // this.setState({ error: null })
@@ -65,13 +65,13 @@ export default class RegistrationForm extends Component {
             required
             id='RegistrationForm__last_name' />
         </div>
-        <div className='nick_name'>
-          <label htmlFor='RegistrationForm__nick_name'>Nickname *</label>
+        <div className='user_name'>
+          <label htmlFor='RegistrationForm__user_name'>Nickname *</label>
           <input
-            name='nick_name'
+            name='user_name'
             type='text'
             required
-            id='RegistrationForm__nick_name'/>
+            id='RegistrationForm__user_name'/>
         </div>
         <div className='password'>
           <label htmlFor='RegistrationForm__password'>Password *{/* <Required /> */}</label>

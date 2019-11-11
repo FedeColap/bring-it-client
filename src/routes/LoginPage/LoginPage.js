@@ -25,7 +25,7 @@ export default class LoginPage extends Component {
   render() {
     return (
       <section className='LoginPage'>
-        <h1>Welcome back! Please log in.</h1>
+        <h1 className="fancy">Welcome back! Please log in.</h1>
         <LoginForm
           onLoginSuccess={this.handleLoginSuccess}
         />
