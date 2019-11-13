@@ -5,6 +5,7 @@ import WelcomeMessage from './routes/WelcomeMessage/WelcomeMessage'
 import MoreInfo from './routes/MoreInfo/MoreInfo'
 import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import LoginPage from './routes/LoginPage/LoginPage'
+import NewTripPage from './routes/NewTripPage/NewTripPage'
 import SearchPage from './routes/SearchPage/SearchPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
 import ApiContext from './ApiContext';
@@ -12,15 +13,19 @@ import './App.css'
 import './mainForm2.css'
 
 class App extends Component {
+ 
+
   constructor(props) {
     super(props);
     this.state = { 
+      store: this.props.files,
       error: null,
       isLogged: false, 
 
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.logginOut = this.logginOut.bind(this)
+    this.updateStore = this.updateStore.bind(this)
   }
   
 
@@ -38,13 +43,25 @@ class App extends Component {
     })
     console.log(this.state.isLogged)
   }
+  updateStore (username, newEmail, newCountry,newMonth  ) {
+    const store = this.state.store
+    console.log(username)
+    console.log(newEmail)
+    // const newEmail =  store.map(file => 
+    //   (file.user_name === username) ? file.email
+    // )
+    // console.log(newEmail)
+
+  }
+
   render() {
     
     const value = {
       store: this.props.files,
       isLogged: this.state.isLogged,
       loggingIn: this.loggingIn,
-      logginOut: this.logginOut
+      logginOut: this.logginOut,
+      updateStore: this.updateStore,
     }
     return (
       <ApiContext.Provider value={value}>
@@ -76,7 +93,10 @@ class App extends Component {
               <Route
                 path={'/search'}
                 render={(props) => <SearchPage {...props} />}
-
+              />
+              <Route
+                path={'/newtrip'}
+                component={NewTripPage}
               />
 
               {/* <PublicOnlyRoute

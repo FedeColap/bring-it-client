@@ -4,5 +4,6 @@ export default React.createContext({
     store : [],
     isLogged: null,
     loggingIn: () => {},
-    logginOut: () => {}
+    logginOut: () => {},
+    updateStore: () => {}
 })

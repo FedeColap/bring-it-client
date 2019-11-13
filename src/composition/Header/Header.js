@@ -24,6 +24,7 @@ export default class Header extends Component {
     renderLogoutLink() {
         return (
           <div className='Header__logged-in'>
+            <Link to='/newtrip'><button>New Trip</button></Link>
             <Link 
                 to='/'
                 onClick={this.handleLogoutClick}
