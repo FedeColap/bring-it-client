@@ -47,14 +47,16 @@ export default class SearchPage extends Component {
 
     updateSearchTerm(term) {
       this.setState({
-        country: term
+        country: term,
+        showResults: false
       })
       console.log(this.state.country)
     }
   
     updateFilterOption(option) {
       this.setState({
-        month: option
+        month: option,
+        showResults: false
       })
       console.log(this.state.month)
     }
