@@ -1,9 +1,16 @@
 import React, { Component } from 'react'
-import SearchForm from '../../composition/SearchForm/SearchForm'
+import SearchBar from '../../composition/SearchBar/SearchBar'
 import { Link } from 'react-router-dom'
+import FilterableList from '../../composition/FilterableList/FilterableList'
+import ApiContext from '../../ApiContext';
+
+import '../../store.js'
 
 
 export default class SearchPage extends Component {
+
+  static contextType = ApiContext;
+
   static defaultProps = {
     // location: {},
     history: {
@@ -11,25 +18,67 @@ export default class SearchPage extends Component {
     },
   }
 
-//   handleLoginSuccess = () => {
-//     const { location, history } = this.props
-//     const destination = (location.state || {}).from || '/'
-//     history.push(destination)
-//   }
+  
 
-    handleLoginSuccess = () => {
-        const { history } = this.props
-        history.push('/search')
+  constructor(props) {
+    super(props);
+    this.state = {
+      isEmptyState: true,
+      country: '',
+      month: 'all'
+    };
+  }
+    renderTheList = () => {
+      console.log('hello!', this.state.country)
+      console.log('hello!', this.state.month)
+      this.setState({
+        ...this.state,
+        isEmptyState: false,
+        showResults: true
+      })
+      
+      return (
+        <FilterableList
+        country={this.state.country}
+        month={this.state.month}/>
+      )
     }
+  
+
+    updateSearchTerm(term) {
+      this.setState({
+        country: term
+      })
+      console.log(this.state.country)
+    }
+  
+    updateFilterOption(option) {
+      this.setState({
+        month: option
+      })
+      console.log(this.state.month)
+    }
+  
 
   render() {
+
+
     return (
       <section className='SearchPage'>
         <h1 className="fancy">Seach for available users</h1>
         <h4>Please answer these question to find out if someone is traveling to a foreign Country and is available to bring you something back.</h4>
-        <SearchForm
-        //   onLoginSuccess={this.handleLoginSuccess}
-        />
+        <SearchBar
+          // country={this.state.country}
+          // month={this.state.month}
+          handleUpdate={term=>this.updateSearchTerm(term)}
+          handleFilterChange={option => this.updateFilterOption(option)}/>
+        <button onClick={this.renderTheList}> Search</button>
+        {this.state.showResults && <FilterableList country={this.state.country} month={this.state.month}/>}
+        
+
+        {/* <FilterableList
+          country={this.state.country}
+          month={this.state.month}/> */}
       </section>
     )
   }

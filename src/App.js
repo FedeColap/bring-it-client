@@ -7,13 +7,47 @@ import RegistrationPage from './routes/RegistrationPage/RegistrationPage'
 import LoginPage from './routes/LoginPage/LoginPage'
 import SearchPage from './routes/SearchPage/SearchPage'
 import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
+import ApiContext from './ApiContext';
 import './App.css'
 import './mainForm2.css'
 
 class App extends Component {
-  state = { error: null }
+  constructor(props) {
+    super(props);
+    this.state = { 
+      error: null,
+      isLogged: false, 
+
+    }
+    this.loggingIn = this.loggingIn.bind(this)
+    this.logginOut = this.logginOut.bind(this)
+  }
+  
+
+  loggingIn () {
+    console.log('loggingIn!')
+    this.setState({
+      isLogged: true
+    })
+    console.log(this.state.isLogged)
+  }
+  logginOut () {
+    console.log('get outta here!')
+    this.setState({
+      isLogged: false
+    })
+    console.log(this.state.isLogged)
+  }
   render() {
+    
+    const value = {
+      store: this.props.files,
+      isLogged: this.state.isLogged,
+      loggingIn: this.loggingIn,
+      logginOut: this.logginOut
+    }
     return (
+      <ApiContext.Provider value={value}>
       <div className='App'>
         <header className='App__header'>
           <Header />
@@ -32,7 +66,8 @@ class App extends Component {
               />
               <Route
                 path={'/login'}
-                component={LoginPage}
+                // component={LoginPage}
+                render={(props) => <LoginPage {...props} />}
               />
               <Route
                 path={'/register'}
@@ -40,7 +75,8 @@ class App extends Component {
               />
               <Route
                 path={'/search'}
-                component={SearchPage}
+                render={(props) => <SearchPage {...props} />}
+
               />
 
               {/* <PublicOnlyRoute
@@ -65,6 +101,7 @@ class App extends Component {
           <h4 className="footer">2019 | Bring it (Please)</h4>
         </footer>
       </div>
+      </ApiContext.Provider>
     )
   }
   

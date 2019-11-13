@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class LoginForm extends Component {
+export default class SearchForm extends Component {
 
   state = { error: null }
 
