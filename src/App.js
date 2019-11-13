@@ -43,21 +43,30 @@ class App extends Component {
     })
     console.log(this.state.isLogged)
   }
-  updateStore (username, newEmail, newCountry,newMonth  ) {
+  updateStore (username, newEmail, newCountry,newMonth) {
     const store = this.state.store
+    console.log(store.length)
     console.log(username)
     console.log(newEmail)
-    // const newEmail =  store.map(file => 
-    //   (file.user_name === username) ? file.email
-    // )
-    // console.log(newEmail)
-
+    const newId = store.length + 2 ;
+    console.log(newId)
+    const newTrip = {
+      id: newId,
+      user_name: username,
+      email: newEmail, 
+      country: newCountry, 
+      month: newMonth
+    }
+    console.log(newTrip)
+    this.setState({
+      store: [...this.state.store, newTrip ]
+    })
   }
 
   render() {
     
     const value = {
-      store: this.props.files,
+      store: this.state.store,
       isLogged: this.state.isLogged,
       loggingIn: this.loggingIn,
       logginOut: this.logginOut,
