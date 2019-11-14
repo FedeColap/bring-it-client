@@ -6,14 +6,8 @@ import ApiContext from '../../ApiContext';
 export default class Header extends Component {
     static contextType = ApiContext;
 
-    static defaultProps = {
-        // location: {},
-        history: {
-          push: () => {},
-        },
-    }
     handleLogoutClick = e => {
-        e.preventDefault()
+        // e.preventDefault() DO NOT PUT IT, AS IT STOPS THE <LINK> ROUTE
         console.log('performing logging out')
         this.context.logginOut()
         // const { history } = this.context.value.history
@@ -25,7 +19,7 @@ export default class Header extends Component {
         return (
           <div className='Header__logged-in'>
             <Link to='/newtrip'><button>New Trip</button></Link>
-            <Link to='/'><p onClick={this.handleLogoutClick}>Logout</p></Link>
+            <Link to='/' onClick={this.handleLogoutClick}><button>Logout</button></Link>
             {/* <button onClick={this.handleLogoutClick}>Logout</button> */}
           </div>
         )  

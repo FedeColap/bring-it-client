@@ -1,0 +1,15 @@
+{
+    "version": 2,
+    "alias": "fedecolap-bring-it-app",
+    "name": "bring-it-app",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }

@@ -188,6 +188,9 @@ section {
     .h4form {
         font-size: 30px;
     }
+    .welcome {
+        font-size: 30px;
+    }
     
 }
 /* for computers */
@@ -198,5 +201,8 @@ section {
   }
   .FilterableList {
     text-align: center;
+}
+.welcome {
+    font-size: 30px;
 }
 } 
