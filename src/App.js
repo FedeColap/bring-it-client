@@ -42,6 +42,7 @@ class App extends Component {
       isLogged: false
     })
     console.log(this.state.isLogged)
+        
   }
   updateStore (username, newEmail, newCountry,newMonth) {
     const store = this.state.store

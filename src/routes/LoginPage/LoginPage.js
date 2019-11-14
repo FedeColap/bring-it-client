@@ -7,13 +7,6 @@ import ApiContext from '../../ApiContext';
 export default class LoginPage extends Component {
   static contextType = ApiContext;
 
-  static defaultProps = {
-    // location: {},
-    history: {
-      push: () => {},
-    },
-  }
-
   // state = {
   //   isLogged: false
   // }
@@ -26,6 +19,7 @@ export default class LoginPage extends Component {
 
     handleLoginSuccess = () => {
         const { history } = this.props
+        console.log(history)
         history.push('/search')
     }
 
@@ -37,7 +31,7 @@ export default class LoginPage extends Component {
           onLoginSuccess={this.handleLoginSuccess}
           loggingIn = {this.props.loggingIn}
         />
-        <Link to='/'><button  className="butCan" type="cancel">Cancel</button></Link>
+        <Link to='/'><p  className="butCan" type="cancel">Cancel</p></Link>
       </section>
     )
   }

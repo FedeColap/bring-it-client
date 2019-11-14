@@ -15,7 +15,7 @@ export default class WelcomeMessage extends Component {
                     <li>Only legal goods can be the object of the transactions: this means that, for example, meat, plants, animals, drugs, arms are not allowed. For a complete list of the forbidden items, please refer to this <a href="https://www.cbp.gov/travel/us-citizens/know-before-you-go/prohibited-and-restricted-items" target="_blank">U.S. Custom and Border Protection Page</a></li>
                     <li>Transactions are allowed only for small quantities of goods, which means, personal use. This App is not a way to bypass duties and other commercial obligations.</li>
                 </ul> 
-                <Link to='/'><button  className="butCan" type="cancel">Go to Welcome Page</button></Link> 
+                <Link to='/'><p  className="butCan" type="cancel">Go to Welcome Page</p></Link> 
            </section>
         )
     }

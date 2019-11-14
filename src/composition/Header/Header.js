@@ -16,22 +16,19 @@ export default class Header extends Component {
         e.preventDefault()
         console.log('performing logging out')
         this.context.logginOut()
-        // const { history } = this.props
-        // console.log(history)
+        const { history } = this.context.value.history
+        console.log(history)
         // history.push('/')
-        this.props.history.push('/')
+        // this.props.history.push('/')
     }
     renderLogoutLink() {
         return (
           <div className='Header__logged-in'>
             <Link to='/newtrip'><button>New Trip</button></Link>
-            <Link 
-                to='/'
-                onClick={this.handleLogoutClick}
-            ><button onClick={this.handleLogoutClick}>Logout</button></Link>
+            <Link to='/'><button onClick={this.handleLogoutClick}>Logout</button></Link>
             {/* <button onClick={this.handleLogoutClick}>Logout</button> */}
           </div>
-        )
+        )  
       }
     
       renderLoginLink() {

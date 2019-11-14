@@ -5,8 +5,32 @@ body {
     margin: 0;
     background-image: linear-gradient(papayawhip, white);
 }
+.butCan {
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    text-decoration: none;
+    text-align: center;
+    background-color:LightSeaGreen;
+    color: white;
+    padding: 1px;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    border:1px solid LightSeaGreen;
+    -webkit-transition: background-color 0.5s ease-out;
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out;
+    transition: background-color 0.5s ease-out;
+}
+.butCan:hover {
+    color: black;
+    background-color: Lime ;
+    border:1px solid Lime ;
+}
 button {
     display: inline-block;
+    cursor: pointer;
     /* margin-left: 30px; */
     padding: 5px;
     font-size: 16px;
@@ -20,14 +44,10 @@ button {
     transition: background-color 0.5s ease-out;
 
 }
-button a {
+a {
     text-decoration: none;
-    color: white;
 }
-button a:hover {
-    text-decoration: none;
-    color: black;
-}
+
 button .navInteraction {
     margin-left: 30px;
     margin-right: 30px;
@@ -107,6 +127,12 @@ main {
     line-height: 1.6;
     padding: 2%;
 }
+section {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
 .spacer{
     display: block;
     width: 100%;
@@ -115,16 +141,23 @@ main {
 
 /*for the phones*/
 @media screen and (max-width: 510px) {
+    h1{
+        margin-top: 0;
+        font-size: 35px;
+    }
     .navInteraction{
         font-size: 14px;
         display: flex;
         flex-direction: column;
+        justify-content: flex-start;
+        text-align: right;
     }
     header {
         font-size: 25px;
         padding: 5px;
-        
+        align-self: center;    
     }
+
     
 }
 /* for tablets */

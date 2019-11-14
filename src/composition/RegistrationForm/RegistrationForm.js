@@ -47,6 +47,7 @@ export default class RegistrationForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
+        <fieldset>
         <div className="registration__hint">* required field</div>
         <div className='first_name'>
           <label htmlFor='RegistrationForm__first_name'>First name * {/* <Required /> */}</label>
@@ -89,8 +90,8 @@ export default class RegistrationForm extends Component {
             required
             id="repeatPassword"/>
        </div>
-        
-        <button type='submit'>
+       </fieldset>  
+        <button  className="butSub" type='submit'>
           Register
         </button>
       </form>

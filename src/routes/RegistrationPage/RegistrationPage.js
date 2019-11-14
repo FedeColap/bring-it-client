@@ -25,7 +25,7 @@ export default class RegistrationPage extends Component {
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />
-        <Link to='/'><button  className="butCan" type="cancel">Cancel</button></Link>
+        <Link to='/'><p  className="butCan" type="cancel">Cancel</p></Link>
       </section>
     )
   }

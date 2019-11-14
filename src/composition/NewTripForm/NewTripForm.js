@@ -82,6 +82,7 @@ export default class NewTripForm extends Component {
         <div role='alert'>
           {error && <p className='red'>{error}</p>}
         </div>
+        <fieldset>
         <div className='name'>
           <label htmlFor='NewTripForm__user_name'>
             Please confirm your Nickname
@@ -126,7 +127,7 @@ export default class NewTripForm extends Component {
                     
          </select>
         </div>
-        
+        </fieldset>
         <button type='submit'>
           Send
         </button>
