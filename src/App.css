@@ -5,7 +5,7 @@ body {
     margin: 0;
     background-image: linear-gradient(papayawhip, white);
 }
-.butCan {
+.butCan, .butSub {
     display: block;
     margin: auto;
     margin-top: 30px;
@@ -27,6 +27,16 @@ body {
     color: black;
     background-color: Lime ;
     border:1px solid Lime ;
+}
+.butCan a {
+    color: white;
+    padding: 3px;
+}
+.butCan a:hover {
+    color: black;
+}
+button.butSub {
+    padding:5px;
 }
 button {
     display: inline-block;
@@ -59,6 +69,9 @@ button:hover {
 }
 .fancy {
     font-family: 'Satisfy', cursive;
+}
+.FilterableList {
+    margin-top: 20px;
 }
 footer{
     display: block;
@@ -96,7 +109,6 @@ nav a {
     /* margin-right: 20px; */
 }
 .navInteraction {
-    /* background-color: green; */
     display:inline-block;
     align-self: stretch;
     /*watch out here, trova il modo di centrarli in altezza*/
@@ -157,16 +169,34 @@ section {
         padding: 5px;
         align-self: center;    
     }
+    .h4form {
+        font-size: 25px;
+    }
 
     
 }
 /* for tablets */
 @media screen and (min-width: 510px) {
-    
+    .navInteraction {
+        width: 30%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        text-align: right;
+        align-items: baseline;
+    }
+    .h4form {
+        font-size: 30px;
+    }
     
 }
 /* for computers */
 @media screen and (min-width: 1400px) {
-  
-    
+  .hform {
+      text-align: center;
+      font-size: 40px;
+  }
+  .FilterableList {
+    text-align: center;
+}
 } 

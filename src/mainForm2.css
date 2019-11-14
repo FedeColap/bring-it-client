@@ -47,13 +47,9 @@ section a {
     fieldset {
         width: 100%;
         padding: 0;
-        margin-bottom: 30px;
     }
     .butSub {
         width: 100%;
-    }
-    .FilterOptions {
-        margin-bottom: 60px;
     }
     section a {
         width: 100%;
@@ -78,12 +74,13 @@ section a {
 /* for computers */
 @media screen and (min-width: 1400px) {
   fieldset {
-    width: 30%;
+    width: 35%;
+
   }
   section a {
-    width: 30%;
+    width: 35%;
 }  
     .butSub {
-        width: 30%;
+        width: 35%;
     }
 } 

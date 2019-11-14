@@ -20,13 +20,13 @@ class FilterableList extends Component {
     if(list.length === 0) {
           return (
                   <div className="FilterableList">
-                    <h4> Here are the results of your search</h4>
+                    <h4 className="fancy h4form"> Here are the results of your search</h4>
                     {answer}
                   </div>
           );
     }else {return (
                 <div className="FilterableList">
-                  <h4> Here are the results of your search</h4>
+                  <h4 className="fancy h4form"> Here are the results of your search</h4>
                   {listA}
                 </div>
     );}

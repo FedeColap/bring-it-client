@@ -67,14 +67,17 @@ export default class SearchPage extends Component {
 
     return (
       <section className='SearchPage'>
-        <h1 className="fancy">Seach for available users</h1>
+        <h1 className="fancy hform">Seach for available users</h1>
         <h4>Please answer these question to find out if someone is traveling to a foreign Country and is available to bring you something back.</h4>
+        <fieldset>
         <SearchBar
           // country={this.state.country}
           // month={this.state.month}
           handleUpdate={term=>this.updateSearchTerm(term)}
           handleFilterChange={option => this.updateFilterOption(option)}/>
-        <button onClick={this.renderTheList}> Search</button>
+          </fieldset>
+        <button className="butSub" onClick={this.renderTheList}> Search</button>
+        
         {this.state.showResults && <FilterableList country={this.state.country} month={this.state.month}/>}
         
 

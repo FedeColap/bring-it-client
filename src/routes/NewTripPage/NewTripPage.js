@@ -32,13 +32,13 @@ export default class NewTripPage extends Component {
   render() {
     return (
       <section className='LoginPage'>
-        <h1 className="fancy">Enter a New Trip</h1>
+        <h1 className="fancy hform">Enter a New Trip</h1>
         <h4>Are you planning to travel abroad soon? That is great news! Let other people know that you are available to bring back some goods by submitting this form.</h4>
         <NewTripForm
           onSubmitSuccess={this.handleSubmitSuccess}
 
         />
-        <Link to='/search'><button  className="butCan" type="cancel">Cancel</button></Link>
+        <Link to='/search'><p  className="butCan" type="cancel">Cancel</p></Link>
       </section>
     )
   }

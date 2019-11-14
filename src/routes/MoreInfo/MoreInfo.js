@@ -5,7 +5,7 @@ export default class WelcomeMessage extends Component {
     render() {
         return (
            <section>
-                <h1 className="fancy">Our mission</h1>
+                <h1 className="fancy hform">Our mission</h1>
         
                 <p>Bring It (Please) is an App created in order to connect people who live in similar areas, so that when someone flies to a Country, he can bring back small goodies to give to the person who contacted him. <br />
                     Our mission is to fight the unfair increase of cost of imported items, without incurring in anything illegal.</p>

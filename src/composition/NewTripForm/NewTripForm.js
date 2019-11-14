@@ -128,7 +128,7 @@ export default class NewTripForm extends Component {
          </select>
         </div>
         </fieldset>
-        <button type='submit'>
+        <button className="butSub" type='submit'>
           Send
         </button>
       </form>
