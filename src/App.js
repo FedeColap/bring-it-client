@@ -18,14 +18,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      store: this.props.files,
+      store: [],
       error: null,
       isLogged: false, 
-
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.logginOut = this.logginOut.bind(this)
     this.updateStore = this.updateStore.bind(this)
+  }
+  componentDidMount() {
+    Promise.all([
+      fetch(`http://localhost:8000/users`)
+  ])
+      .then(([res]) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+          return res.json()
+      })
+      .then((data) => {
+          this.setState({store: data});
+      })
+      .catch(error => {
+          console.error({error});
+  });
   }
   
 

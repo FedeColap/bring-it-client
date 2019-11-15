@@ -1,9 +1,23 @@
 import React from 'react'
 
-export default React.createContext({
-    store : [],
+//PRECEDENTE VERSIONE FUNZIONANTE
+// export default React.createContext({
+//     store : [],
+//     isLogged: null,
+//     loggingIn: () => {},
+//     logginOut: () => {},
+//     updateStore: () => {}
+// })
+
+const ApiContext = React.createContext({
+    store: [],
+    error: null,
     isLogged: null,
     loggingIn: () => {},
     logginOut: () => {},
-    updateStore: () => {}
-})
+    updateStore: () => {},
+  })
+  export default ApiContext
+  
+  
+  

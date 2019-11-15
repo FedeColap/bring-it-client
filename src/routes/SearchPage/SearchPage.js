@@ -5,40 +5,75 @@ import FilterableList from '../../composition/FilterableList/FilterableList'
 import ApiContext from '../../ApiContext';
 
 import '../../store.js'
+import { nextTick } from 'q';
 
 
 export default class SearchPage extends Component {
 
   static contextType = ApiContext;
 
-  static defaultProps = {
-    // location: {},
-    history: {
-      push: () => {},
-    },
-  }
-
-  
-
   constructor(props) {
     super(props);
     this.state = {
       isEmptyState: true,
+      people: [],
       country: '',
       month: 'all'
     };
   }
     renderTheList = () => {
+      // e.preventDefault();
       console.log('hello!', this.state.country)
       console.log('hello!', this.state.month)
-      this.setState({
-        ...this.state,
-        isEmptyState: false,
-        showResults: true
+      
+      //construct a URL with the query string
+      const baseUrl = 'http://localhost:8000/search';
+      const params = [];
+      if (this.state.country) {
+        params.push(`nation=${this.state.country}`);
+      }
+    
+      const url = `${baseUrl}?${params}`;
+      console.log(url)
+
+      fetch(url)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
       })
+      .then(data => {
+        console.log(data)
+        const output = data.filter(dt => dt.month === this.state.month)
+        console.log(output)
+        this.setState({
+          ...this.state,
+          store : output,
+          isEmptyState: false,
+          showResults: true
+        })
+        console.log(this.state.store)
+        
+          return (
+            <FilterableList
+            store={this.state.store}
+            country={this.state.country}
+            month={this.state.month}/>
+          )
+          
+      })
+      
+      .catch(err => {
+        this.setState({
+          error: 'Sorry, could not get books at this time.'
+        });
+      })
+      
       
       return (
         <FilterableList
+        people={this.state.people}
         country={this.state.country}
         month={this.state.month}/>
       )
