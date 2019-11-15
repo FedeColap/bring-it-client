@@ -11,6 +11,7 @@ import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
 import ApiContext from './ApiContext';
 import './App.css'
 import './mainForm2.css'
+import './slideshow.css'
 
 class App extends Component {
  
