@@ -16,7 +16,7 @@ export default class SearchPage extends Component {
     super(props);
     this.state = {
       isEmptyState: true,
-      people: [],
+      store: [],
       country: '',
       month: 'all'
     };

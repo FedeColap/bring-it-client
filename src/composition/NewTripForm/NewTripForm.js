@@ -43,10 +43,10 @@ export default class NewTripForm extends Component {
         console.log('Displaying User: ', username);
         const store = this.context.store
         console.log(store)
-        const email =  store.filter(file => 
+        const verify =  store.filter(file => 
         (file.user_name === username) 
         )
-        if(email.length === 0) {
+        if(verify.length === 0) {
             alert ("the nickname entered is incorrect")    
         } else {this.passTheInfos(e)}
     }
@@ -63,6 +63,7 @@ export default class NewTripForm extends Component {
         const user =  store.filter(file => 
         (file.user_name === username) 
         )
+        console.log(user)
         const newEmail = user[0].email
         // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
         console.log(user[0].email)
