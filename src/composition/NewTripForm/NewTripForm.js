@@ -52,6 +52,7 @@ export default class NewTripForm extends Component {
       } else {this.checkCountry(e)}
     }
     checkCountry = (e) => {
+      e.preventDefault();
       const externalUrl = `https://restcountries.eu/rest/v2/name/${this.state.country}`;
         console.log(externalUrl);
 
@@ -59,17 +60,28 @@ export default class NewTripForm extends Component {
           .then(response => {
             console.log(typeof(response))
             console.log(response.status)
-            // if (response.status === 200) {
-            //   return response.json();}
-
-             
-            console.log(response[0].name)
-            // throw new Error(response.statusText);
+            console.log(response)
+            if (response.ok) {
+              return response.json();
+            } else {alert('Could not find the Counrty.. did you spell it correctly?') }
           })
-          // .then(console.log(response))
+          .then(responseJson => {
+            this.setState({
+              country: responseJson[0].name
+            })
+            console.log(this.state.country)
+            this.passTheInfos(e);
+          })
+          // .then(responseJson => {
+          //   if(responseJson[0].name) {
+          //     this.passTheInfos(e);
+          //   } 
+          // })
           .catch(err => {
             console.log(`Something went wrong: ${err.message}`);
           });
+
+          
 
     }
 
@@ -97,6 +109,7 @@ export default class NewTripForm extends Component {
   render() {
     const { error } = this.state
     return (
+      
       <form
         className='NewTripForm'
         onSubmit={this.verifyUser}
@@ -155,6 +168,8 @@ export default class NewTripForm extends Component {
           Send
         </button>
       </form>
+      
+      
     )
   }
 }
