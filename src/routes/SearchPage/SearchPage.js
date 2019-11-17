@@ -21,6 +21,33 @@ export default class SearchPage extends Component {
       month: 'all'
     };
   }
+
+  checkCountry = (e) => {
+    e.preventDefault();
+    const externalUrl = `https://restcountries.eu/rest/v2/name/${this.state.country}`;
+      console.log(externalUrl);
+
+      fetch(externalUrl)
+        .then(response => {
+          console.log(typeof(response))
+          console.log(response.status)
+          console.log(response)
+          if (response.ok) {
+            return response.json();
+          } else {alert('Could not find the Country.. did you spell it correctly?') }
+        })
+        .then(responseJson => {
+          this.setState({
+            country: responseJson[0].name
+          })
+          console.log(this.state.country)
+          this.renderTheList();
+        })
+        .catch(err => {
+          console.log(`Something went wrong: ${err.message}`);
+        });
+  }
+
     renderTheList = () => {
       // e.preventDefault();
       console.log('hello!', this.state.country)
@@ -111,7 +138,7 @@ export default class SearchPage extends Component {
           handleUpdate={term=>this.updateSearchTerm(term)}
           handleFilterChange={option => this.updateFilterOption(option)}/>
           </fieldset>
-        <button className="butSub" onClick={this.renderTheList}> Search</button>
+        <button className="butSub" onClick={this.checkCountry}> Search</button>
         
         {this.state.showResults && <FilterableList country={this.state.country} month={this.state.month}/>}
         

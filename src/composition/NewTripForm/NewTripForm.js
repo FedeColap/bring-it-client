@@ -63,7 +63,7 @@ export default class NewTripForm extends Component {
             console.log(response)
             if (response.ok) {
               return response.json();
-            } else {alert('Could not find the Counrty.. did you spell it correctly?') }
+            } else {alert('Could not find the Country.. did you spell it correctly?') }
           })
           .then(responseJson => {
             this.setState({
@@ -72,17 +72,9 @@ export default class NewTripForm extends Component {
             console.log(this.state.country)
             this.passTheInfos(e);
           })
-          // .then(responseJson => {
-          //   if(responseJson[0].name) {
-          //     this.passTheInfos(e);
-          //   } 
-          // })
           .catch(err => {
             console.log(`Something went wrong: ${err.message}`);
           });
-
-          
-
     }
 
     passTheInfos = (e) => {
