@@ -48,7 +48,29 @@ export default class NewTripForm extends Component {
         )
         if(verify.length === 0) {
             alert ("the nickname entered is incorrect")    
-        } else {this.passTheInfos(e)}
+        // } else {this.passTheInfos(e)}
+      } else {this.checkCountry(e)}
+    }
+    checkCountry = (e) => {
+      const externalUrl = `https://restcountries.eu/rest/v2/name/${this.state.country}`;
+        console.log(externalUrl);
+
+        fetch(externalUrl)
+          .then(response => {
+            console.log(typeof(response))
+            console.log(response.status)
+            // if (response.status === 200) {
+            //   return response.json();}
+
+             
+            console.log(response[0].name)
+            // throw new Error(response.statusText);
+          })
+          // .then(console.log(response))
+          .catch(err => {
+            console.log(`Something went wrong: ${err.message}`);
+          });
+
     }
 
     passTheInfos = (e) => {
