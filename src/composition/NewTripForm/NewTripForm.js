@@ -104,7 +104,7 @@ export default class NewTripForm extends Component {
     passTheInfos = (e) => {
         e.preventDefault()
         this.setState({ error: null })
-        const userid = this.state.user_id;
+        const user_id = this.state.user_id;
         const newCountry = this.state.country;
         const newMonth = this.state.month;
         const store = this.context.store
@@ -118,7 +118,7 @@ export default class NewTripForm extends Component {
         // // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
         // console.log(user[0].email)
         // console.log(newEmail)
-        this.context.updateStore(userid, newCountry, newMonth )
+        this.context.updateStore(user_id, newCountry, newMonth )
         this.props.onSubmitSuccess()
     }
 
@@ -160,7 +160,7 @@ export default class NewTripForm extends Component {
         </div>
         <div className='months'>
         <label htmlFor='SearchForm__months'>
-            Which month would you like to receive the goods?
+            In which month are you taking your trip?
           </label>
           <select name="months" id="SearchForm__months" required onChange={this.handleNewMonth}>
                     <option value ="all">Select</option>

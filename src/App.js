@@ -60,16 +60,18 @@ class App extends Component {
     console.log(this.state.isLogged)
         
   }
-  updateStore (userid, newCountry, newMonth) {
+  updateStore (user_id, newCountry, newMonth) {
     const store = this.state.store
     console.log(store.length)
-    console.log(userid)
+    console.log(user_id)
     const newTrip = {
       country: newCountry, 
       month: newMonth,
-      user_id: userid,
+      user_id: user_id,
     }
     console.log(newTrip)
+    
+
     // this.setState({
     //   store: [...this.state.store, newTrip ]
     // })
@@ -77,9 +79,9 @@ class App extends Component {
       fetch(`http://localhost:8000/api/trips`, {
         method: 'POST',
         headers: {
-          'content-type': 'application/json',
-          // 'authorization': `bearer ${TokenService.getAuthToken()}`,
-        },
+                    'Content-Type': 'application/json',
+                    // 'authorization': `bearer ${TokenService.getAuthToken()}`,
+                  },
         body: JSON.stringify({
           user_id: newTrip.user_id,
           country: newTrip.newCountry,
