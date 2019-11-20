@@ -70,31 +70,55 @@ export default class NewTripForm extends Component {
               country: responseJson[0].name
             })
             console.log(this.state.country)
-            this.passTheInfos(e);
+            this.findUserId(e);
           })
           .catch(err => {
             console.log(`Something went wrong: ${err.message}`);
           });
     }
 
+    findUserId = (e) => {
+      const url = 'http://localhost:8000/api/users';
+
+      fetch(url)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data)
+        const output = data.filter(dt => dt.user_name === this.state.user_name)
+        console.log(output)
+        const user_id = output[0].id
+        this.setState({
+          user_id: user_id
+        })
+        console.log(this.state)
+        this.passTheInfos(e)
+      })
+
+    }
+
     passTheInfos = (e) => {
         e.preventDefault()
         this.setState({ error: null })
-        const username = this.state.user_name;
+        const userid = this.state.user_id;
         const newCountry = this.state.country;
         const newMonth = this.state.month;
         const store = this.context.store
         // console.log(username)
-        console.log(store)
-        const user =  store.filter(file => 
-        (file.user_name === username) 
-        )
-        console.log(user)
-        const newEmail = user[0].email
-        // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
-        console.log(user[0].email)
-        console.log(newEmail)
-        this.context.updateStore(username, newEmail, newCountry,newMonth )
+        // console.log(store)
+        // const user =  store.filter(file => 
+        // (file.user_name === username) 
+        // )
+        // console.log(user)
+        // const newEmail = user[0].email
+        // // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
+        // console.log(user[0].email)
+        // console.log(newEmail)
+        this.context.updateStore(userid, newCountry, newMonth )
         this.props.onSubmitSuccess()
     }
 

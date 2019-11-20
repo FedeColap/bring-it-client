@@ -7,13 +7,6 @@ import ApiContext from '../../ApiContext';
 export default class NewTripPage extends Component {
   static contextType = ApiContext;
 
-  static defaultProps = {
-    // location: {},
-    history: {
-      push: () => {},
-    },
-  }
-
   // state = {
   //   isLogged: false
   // }

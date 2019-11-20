@@ -1,5 +1,5 @@
 // import TokenService from '../services/token-service'
-// import config from '../config'
+import config from '../config'
 
 const UsersApiService = {
   getUsers() {
@@ -35,15 +35,15 @@ const UsersApiService = {
           : res.json()
       )
   },
-  postNewTrip( user_name, country, month) {
-    return fetch(`${config.API_ENDPOINT}/users`, {
+  postNewTrip( user_id, country, month) {
+    return fetch(`${config.API_ENDPOINT}/trips`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
-        user_name: user_name,
+        user_id: user_id,
         country: country,
         month: month
       }),

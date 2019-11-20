@@ -29,7 +29,7 @@ class App extends Component {
   componentDidMount() {
     Promise.all([
       fetch(`http://localhost:8000/api/trips`)
-  ])
+    ])
       .then(([res]) => {
         if (!res.ok) {
           throw new Error(res.statusText);
@@ -60,24 +60,46 @@ class App extends Component {
     console.log(this.state.isLogged)
         
   }
-  updateStore (username, newEmail, newCountry,newMonth) {
+  updateStore (userid, newCountry, newMonth) {
     const store = this.state.store
     console.log(store.length)
-    console.log(username)
-    console.log(newEmail)
-    const newId = store.length + 2 ;
-    console.log(newId)
+    console.log(userid)
     const newTrip = {
-      id: newId,
-      user_name: username,
-      email: newEmail, 
       country: newCountry, 
-      month: newMonth
+      month: newMonth,
+      user_id: userid,
     }
     console.log(newTrip)
-    this.setState({
-      store: [...this.state.store, newTrip ]
-    })
+    // this.setState({
+    //   store: [...this.state.store, newTrip ]
+    // })
+    Promise.all([
+      fetch(`http://localhost:8000/api/trips`, {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          // 'authorization': `bearer ${TokenService.getAuthToken()}`,
+        },
+        body: JSON.stringify({
+          user_id: newTrip.user_id,
+          country: newTrip.newCountry,
+          month: newTrip.newMonth
+        }),
+      })
+    ])
+
+      .then(([res]) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+          return res.json()
+      })
+      .then((data) => {
+          this.setState({store: data});
+      })
+      .catch(error => {
+          console.error({error});
+      });
   }
 
   render() {
