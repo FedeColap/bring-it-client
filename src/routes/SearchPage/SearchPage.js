@@ -54,13 +54,13 @@ export default class SearchPage extends Component {
       console.log('hello!', this.state.month)
       
       //construct a URL with the query string
-      const baseUrl = 'http://localhost:8000/search';
-      const params = [];
-      if (this.state.country) {
-        params.push(`nation=${this.state.country}`);
-      }
+      const url = 'http://localhost:8000/api/trips';
+      // const params = [];
+      // if (this.state.country) {
+      //   params.push(`${this.state.country}`);
+      // }
     
-      const url = `${baseUrl}?${params}`;
+      // const url = `${baseUrl}?${params}`;
       console.log(url)
 
       fetch(url)
@@ -93,7 +93,7 @@ export default class SearchPage extends Component {
       
       .catch(err => {
         this.setState({
-          error: 'Sorry, could not get books at this time.'
+          error: 'Sorry, could not get travelers at this time.'
         });
       })
       

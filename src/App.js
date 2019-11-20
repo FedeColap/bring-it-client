@@ -28,7 +28,7 @@ class App extends Component {
   }
   componentDidMount() {
     Promise.all([
-      fetch(`http://localhost:8000/users`)
+      fetch(`http://localhost:8000/api/trips`)
   ])
       .then(([res]) => {
         if (!res.ok) {

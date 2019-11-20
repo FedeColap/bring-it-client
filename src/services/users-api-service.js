@@ -14,31 +14,6 @@ const UsersApiService = {
           : res.json()
       )
   },
-  
-  getCountry(country) {
-    return fetch(`${config.API_ENDPOINT}/country`, {
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },
-  getMonth(month) {
-    return fetch(`${config.API_ENDPOINT}/month`, {
-      headers: {
-        'authorization': `bearer ${TokenService.getAuthToken()}`,
-      },
-    })
-      .then(res =>
-        (!res.ok)
-          ? res.json().then(e => Promise.reject(e))
-          : res.json()
-      )
-  },
   postUsers(first_name, last_name, user_name, email, password) {
     return fetch(`${config.API_ENDPOINT}/users`, {
       method: 'POST',

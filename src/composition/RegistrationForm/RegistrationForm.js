@@ -11,7 +11,7 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // const { full_name, nick_name, user_name, password } = ev.target
+    // const { full_name, last_name, nick_name, user_name, password } = ev.target
     this.props.onRegistrationSuccess()
     const username = e.target.user_name.value;
     const password = e.target.password.value;
