@@ -7,16 +7,6 @@ import ApiContext from '../../ApiContext';
 export default class NewTripPage extends Component {
   static contextType = ApiContext;
 
-  // state = {
-  //   isLogged: false
-  // }
-
-//   handleLoginSuccess = () => {
-//     const { location, history } = this.props
-//     const destination = (location.state || {}).from || '/'
-//     history.push(destination)
-//   }
-
     handleSubmitSuccess = () => {
         const { history } = this.props
         history.push('/search')

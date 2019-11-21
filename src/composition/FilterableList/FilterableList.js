@@ -10,13 +10,14 @@ class FilterableList extends Component {
 
     let answer = "Sorry, no uses are available for your criteria";
     
-    const people= this.props.store
+    const people = this.props.store
     console.log(people)
     const list = this.context.store
     
         .filter(file => 
         file.country.includes(this.props.country)
         && (file.month === 'all' || file.month === this.props.month));
+        console.log(list)
 
     let listA = list.map((file, key) => <ListItem {...file} key={key} />);
         

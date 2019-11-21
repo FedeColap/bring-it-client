@@ -107,17 +107,7 @@ export default class NewTripForm extends Component {
         const user_id = this.state.user_id;
         const newCountry = this.state.country;
         const newMonth = this.state.month;
-        const store = this.context.store
-        // console.log(username)
-        // console.log(store)
-        // const user =  store.filter(file => 
-        // (file.user_name === username) 
-        // )
-        // console.log(user)
-        // const newEmail = user[0].email
-        // // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
-        // console.log(user[0].email)
-        // console.log(newEmail)
+
         this.context.updateStore(user_id, newCountry, newMonth )
         this.props.onSubmitSuccess()
     }

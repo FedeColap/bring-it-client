@@ -26,7 +26,7 @@ class App extends Component {
     this.logginOut = this.logginOut.bind(this)
     this.updateStore = this.updateStore.bind(this)
   }
-  componentDidMount() {
+  retrieveTheInfos = () => {
     Promise.all([
       fetch(`http://localhost:8000/api/trips`)
     ])
@@ -42,6 +42,10 @@ class App extends Component {
       .catch(error => {
           console.error({error});
   });
+  }
+  
+  componentDidMount() {
+    this.retrieveTheInfos()
   }
   
 
@@ -70,11 +74,9 @@ class App extends Component {
       user_id: user_id,
     }
     console.log(newTrip)
-    
+    const newtripJson = JSON.stringify(newTrip)
+    console.log(newtripJson)
 
-    // this.setState({
-    //   store: [...this.state.store, newTrip ]
-    // })
     Promise.all([
       fetch(`http://localhost:8000/api/trips`, {
         method: 'POST',
@@ -82,11 +84,7 @@ class App extends Component {
                     'Content-Type': 'application/json',
                     // 'authorization': `bearer ${TokenService.getAuthToken()}`,
                   },
-        body: JSON.stringify({
-          user_id: newTrip.user_id,
-          country: newTrip.newCountry,
-          month: newTrip.newMonth
-        }),
+        body: newtripJson
       })
     ])
 
@@ -96,12 +94,16 @@ class App extends Component {
         }
           return res.json()
       })
-      .then((data) => {
-          this.setState({store: data});
-      })
+      .then(this.retrieveTheInfos())
+      // .then((data) => {
+      //     this.setState({
+      //       store: [...this.state.store, data]
+      //     });
+      // })
       .catch(error => {
           console.error({error});
       });
+      // this.retrieveTheInfos()
   }
 
   render() {
