@@ -43,37 +43,79 @@ export default class NewTripForm extends Component {
         console.log('Displaying User: ', username);
         const store = this.context.store
         console.log(store)
-        const email =  store.filter(file => 
+        const verify =  store.filter(file => 
         (file.user_name === username) 
         )
-        if(email.length === 0) {
+        if(verify.length === 0) {
             alert ("the nickname entered is incorrect")    
-        } else {this.passTheInfos(e)}
+        // } else {this.passTheInfos(e)}
+      } else {this.checkCountry(e)}
+    }
+    checkCountry = (e) => {
+      e.preventDefault();
+      const externalUrl = `https://restcountries.eu/rest/v2/name/${this.state.country}`;
+        console.log(externalUrl);
+
+        fetch(externalUrl)
+          .then(response => {
+            console.log(typeof(response))
+            console.log(response.status)
+            console.log(response)
+            if (response.ok) {
+              return response.json();
+            } else {alert('Could not find the Country.. did you spell it correctly?') }
+          })
+          .then(responseJson => {
+            this.setState({
+              country: responseJson[0].name
+            })
+            console.log(this.state.country)
+            this.findUserId(e);
+          })
+          .catch(err => {
+            console.log(`Something went wrong: ${err.message}`);
+          });
+    }
+
+    findUserId = (e) => {
+      const url = 'http://localhost:8000/api/users';
+
+      fetch(url)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then(data => {
+        console.log(data)
+        const output = data.filter(dt => dt.user_name === this.state.user_name)
+        console.log(output)
+        const user_id = output[0].id
+        this.setState({
+          user_id: user_id
+        })
+        console.log(this.state)
+        this.passTheInfos(e)
+      })
+
     }
 
     passTheInfos = (e) => {
         e.preventDefault()
         this.setState({ error: null })
-        const username = this.state.user_name;
+        const user_id = this.state.user_id;
         const newCountry = this.state.country;
         const newMonth = this.state.month;
-        const store = this.context.store
-        // console.log(username)
-        console.log(store)
-        const user =  store.filter(file => 
-        (file.user_name === username) 
-        )
-        const newEmail = user[0].email
-        // const newId = user[0].id   IN QUESTO CASO NON MI SERVE PERCHE L'ID SI RIFERISCE AL DB TOTALE, NON AL SOLO USER ID
-        console.log(user[0].email)
-        console.log(newEmail)
-        this.context.updateStore(username, newEmail, newCountry,newMonth )
+
+        this.context.updateStore(user_id, newCountry, newMonth )
         this.props.onSubmitSuccess()
     }
 
   render() {
     const { error } = this.state
     return (
+      
       <form
         className='NewTripForm'
         onSubmit={this.verifyUser}
@@ -108,7 +150,7 @@ export default class NewTripForm extends Component {
         </div>
         <div className='months'>
         <label htmlFor='SearchForm__months'>
-            Which month would you like to receive the goods?
+            In which month are you taking your trip?
           </label>
           <select name="months" id="SearchForm__months" required onChange={this.handleNewMonth}>
                     <option value ="all">Select</option>
@@ -132,6 +174,8 @@ export default class NewTripForm extends Component {
           Send
         </button>
       </form>
+      
+      
     )
   }
 }

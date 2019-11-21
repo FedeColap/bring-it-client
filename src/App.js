@@ -19,14 +19,34 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
-      store: this.props.files,
+      store: [],
       error: null,
       isLogged: false, 
-
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.logginOut = this.logginOut.bind(this)
     this.updateStore = this.updateStore.bind(this)
+  }
+  retrieveTheInfos = () => {
+    Promise.all([
+      fetch(`http://localhost:8000/api/trips`)
+    ])
+      .then(([res]) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+          return res.json()
+      })
+      .then((data) => {
+          this.setState({store: data});
+      })
+      .catch(error => {
+          console.error({error});
+  });
+  }
+  
+  componentDidMount() {
+    this.retrieveTheInfos()
   }
   
 
@@ -45,24 +65,46 @@ class App extends Component {
     console.log(this.state.isLogged)
         
   }
-  updateStore (username, newEmail, newCountry,newMonth) {
+  updateStore (user_id, newCountry, newMonth) {
     const store = this.state.store
     console.log(store.length)
-    console.log(username)
-    console.log(newEmail)
-    const newId = store.length + 2 ;
-    console.log(newId)
+    console.log(user_id)
     const newTrip = {
-      id: newId,
-      user_name: username,
-      email: newEmail, 
       country: newCountry, 
-      month: newMonth
+      month: newMonth,
+      user_id: user_id,
     }
     console.log(newTrip)
-    this.setState({
-      store: [...this.state.store, newTrip ]
-    })
+    const newtripJson = JSON.stringify(newTrip)
+    console.log(newtripJson)
+
+    Promise.all([
+      fetch(`http://localhost:8000/api/trips`, {
+        method: 'POST',
+        headers: {
+                    'Content-Type': 'application/json',
+                    // 'authorization': `bearer ${TokenService.getAuthToken()}`,
+                  },
+        body: newtripJson
+      })
+    ])
+
+      .then(([res]) => {
+        if (!res.ok) {
+          throw new Error(res.statusText);
+        }
+          return res.json()
+      })
+      .then(this.retrieveTheInfos())
+      // .then((data) => {
+      //     this.setState({
+      //       store: [...this.state.store, data]
+      //     });
+      // })
+      .catch(error => {
+          console.error({error});
+      });
+      // this.retrieveTheInfos()
   }
 
   render() {
