@@ -6,22 +6,30 @@ class FilterableList extends Component {
 
   static contextType = ApiContext;
 
+  constructor(props) {
+    super(props);
+    
+  }
+
   render() {
 
     let answer = "Sorry, no uses are available for your criteria";
     
-    const people = this.props.store
-    console.log(people)
-    const list = this.context.store
+    // const store = this.props.store
+    console.log(this.props)
+    // console.log(store)
+    console.log(this.context.store)
+    // const list = this.context.store
+    const store = this.props.store
     
         .filter(file => 
         file.country.includes(this.props.country)
         && (file.month === 'all' || file.month === this.props.month));
-        console.log(list)
+        // console.log(list)
 
-    let listA = list.map((file, key) => <ListItem {...file} key={key} />);
+    let listA = store.map((file, key) => <ListItem {...file} key={key} />);
         
-    if(list.length === 0) {
+    if(store.length === 0) {
           return (
                   <div className="FilterableList">
                     <h4 className="fancy h4form"> Here are the results of your search</h4>

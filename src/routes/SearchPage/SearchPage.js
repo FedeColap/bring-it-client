@@ -55,12 +55,7 @@ export default class SearchPage extends Component {
       
       //construct a URL with the query string
       const url = 'http://localhost:8000/api/trips';
-      // const params = [];
-      // if (this.state.country) {
-      //   params.push(`${this.state.country}`);
-      // }
-    
-      // const url = `${baseUrl}?${params}`;
+
       console.log(url)
 
       fetch(url)
@@ -100,7 +95,7 @@ export default class SearchPage extends Component {
       
       return (
         <FilterableList
-        people={this.state.people}
+        store={this.state.store}
         country={this.state.country}
         month={this.state.month}/>
       )
@@ -133,19 +128,13 @@ export default class SearchPage extends Component {
         <h4>Please answer these question to find out if someone is traveling to a foreign Country and is available to bring you something back.</h4>
         <fieldset>
         <SearchBar
-          // country={this.state.country}
-          // month={this.state.month}
           handleUpdate={term=>this.updateSearchTerm(term)}
           handleFilterChange={option => this.updateFilterOption(option)}/>
           </fieldset>
         <button className="butSub" onClick={this.checkCountry}> Search</button>
         
-        {this.state.showResults && <FilterableList country={this.state.country} month={this.state.month}/>}
+        {this.state.showResults && <FilterableList store={this.state.store} country={this.state.country} month={this.state.month}/>}
         
-
-        {/* <FilterableList
-          country={this.state.country}
-          month={this.state.month}/> */}
       </section>
     )
   }
