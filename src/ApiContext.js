@@ -16,6 +16,7 @@ const ApiContext = React.createContext({
     loggingIn: () => {},
     logginOut: () => {},
     updateStore: () => {},
+    addTrip: () => {},
   })
   export default ApiContext
   

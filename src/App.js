@@ -29,7 +29,8 @@ class App extends Component {
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.logginOut = this.logginOut.bind(this)
-    this.updateStore = this.updateStore.bind(this)
+    // this.updateStore = this.updateStore.bind(this)
+    this.addTrip= this.addTrip.bind(this)
   }
   retrieveTheInfos = () => {
     
@@ -62,48 +63,12 @@ class App extends Component {
     console.log(this.state.isLogged)
         
   }
-  updateStore (user_id, newCountry, newMonth) {
-    const store = this.state.store
-    console.log(store.length)
-    console.log(user_id)
-    const newTrip = {
-      country: newCountry, 
-      month: newMonth,
-      user_id: user_id,
-    }
-    console.log(newTrip)
-    const newtripJson = JSON.stringify(newTrip)
-    console.log(newtripJson)
-
-    Promise.all([
-      fetch(`http://localhost:8000/api/trips`, {
-        method: 'POST',
-        headers: {
-                    'Content-Type': 'application/json',
-                    'authorization': `basic ${TokenService.getAuthToken()}`,
-                  },
-        body: newtripJson
-      })
-    ])
-
-      .then(([res]) => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-          return res.json()
-      })
-      .then(this.retrieveTheInfos())
-      // .then((data) => {
-      //     this.setState({
-      //       store: [...this.state.store, data]
-      //     });
-      // })
-      .catch(error => {
-          console.error({error});
-      });
-      // this.retrieveTheInfos()
+  addTrip = () => {
+    //I AM NOT setState[...trips, NewTrip] BECAUSE IT RETRIEVES THE INFO PARTIALLY (BASED ON THE POST F THE TRIP). 
+    //WHAT I NEED IS THE TOTAL OF INFO = 2 DB COMBINED, SO I RE-RENDER THE WHOLE STORE
+    this.retrieveTheInfos()
   }
-
+  
   render() {
     
     const value = {
@@ -111,7 +76,7 @@ class App extends Component {
       isLogged: this.state.isLogged,
       loggingIn: this.loggingIn,
       logginOut: this.logginOut,
-      updateStore: this.updateStore,
+      addTrip: this.addTrip,
     }
     return (
       <ApiContext.Provider value={value}>

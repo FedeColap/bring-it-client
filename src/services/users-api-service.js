@@ -51,15 +51,14 @@ const TripsApiService = {
       )
   },
   
-  postNewTrip( user_id, country, month) {
+  postNewTrip( country, month) {
     return fetch(`${config.API_ENDPOINT}/trips`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
         'authorization': `basic ${TokenService.getAuthToken()}`,
       },
-      body: JSON.stringify({
-        user_id: user_id,
+      body: JSON.stringify({ 
         country: country,
         month: month
       }),
