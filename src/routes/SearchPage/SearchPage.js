@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import SearchBar from '../../composition/SearchBar/SearchBar'
-import { Link } from 'react-router-dom'
 import FilterableList from '../../composition/FilterableList/FilterableList'
 import ApiContext from '../../ApiContext';
+import TripsApiService from '../../services/users-api-service'
 
-import '../../store.js'
-import { nextTick } from 'q';
+
 
 
 export default class SearchPage extends Component {
@@ -52,19 +51,8 @@ export default class SearchPage extends Component {
       // e.preventDefault();
       console.log('hello!', this.state.country)
       console.log('hello!', this.state.month)
-      
-      //construct a URL with the query string
-      const url = 'http://localhost:8000/api/trips';
 
-      console.log(url)
-
-      fetch(url)
-      .then(res => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-        return res.json();
-      })
+      TripsApiService.getTrips()
       .then(data => {
         console.log(data)
         const output = data.filter(dt => dt.month === this.state.month)

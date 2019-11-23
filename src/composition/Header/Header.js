@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ApiContext from '../../ApiContext';
+import TokenService from '../../services/token-service'
 
 
 export default class Header extends Component {
@@ -10,6 +11,7 @@ export default class Header extends Component {
         // e.preventDefault() DO NOT PUT IT, AS IT STOPS THE <LINK> ROUTE
         console.log('performing logging out')
         this.context.logginOut()
+        TokenService.clearAuthToken()
         // const { history } = this.context.value.history
         // console.log(history)
         // history.push('/')
@@ -39,12 +41,13 @@ export default class Header extends Component {
                 <header>Bring It (Please)</header>
                 <div className="navInteraction">
                     <Link to='/info' className="headerInfo">More Info</Link>
-                    {this.context.isLogged
+                    {TokenService.hasAuthToken() 
+                      ? this.renderLogoutLink()
+                      : this.renderLoginLink()}
+                    {/* {this.context.isLogged
                     ? this.renderLogoutLink()
-                    : this.renderLoginLink()}
+                    : this.renderLoginLink()} */}
 
-                    {/* <Link to='/register'><button>Register</button></Link>
-                    <Link to='/login'><button>Log in</button></Link> */}
                 </div> 
             </nav>
             

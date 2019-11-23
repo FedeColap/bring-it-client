@@ -12,6 +12,10 @@ import ApiContext from './ApiContext';
 import './App.css'
 import './mainForm2.css'
 import './slideshow.css'
+import TripsApiService from './services/users-api-service'
+import TokenService from './services/token-service'
+// import PrivateRoute from '../Utils/PrivateRoute'
+// import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
 
 class App extends Component {
  
@@ -28,15 +32,8 @@ class App extends Component {
     this.updateStore = this.updateStore.bind(this)
   }
   retrieveTheInfos = () => {
-    Promise.all([
-      fetch(`http://localhost:8000/api/trips`)
-    ])
-      .then(([res]) => {
-        if (!res.ok) {
-          throw new Error(res.statusText);
-        }
-          return res.json()
-      })
+    
+    TripsApiService.getTrips()
       .then((data) => {
           this.setState({store: data});
       })
@@ -83,7 +80,7 @@ class App extends Component {
         method: 'POST',
         headers: {
                     'Content-Type': 'application/json',
-                    // 'authorization': `bearer ${TokenService.getAuthToken()}`,
+                    'authorization': `basic ${TokenService.getAuthToken()}`,
                   },
         body: newtripJson
       })

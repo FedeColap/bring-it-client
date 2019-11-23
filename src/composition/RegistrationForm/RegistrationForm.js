@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-// import { Button, Input, Required } from '../Utils/Utils'
-// import AuthApiService from '../../services/auth-api-service'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -11,30 +9,15 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // const { full_name, last_name, nick_name, user_name, password } = ev.target
-    this.props.onRegistrationSuccess()
-    const username = e.target.user_name.value;
+    // const { first_name, last_name, user_name, email, password } = ev.target
+    const first_name = e.target.first_name.value;
+    const last_name = e.target.last_name.value;
+    const user_name = e.target.user_name.value;
+    const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log('Name: ', username);
-    console.log('Password: ', password);
-
-    // this.setState({ error: null })
-    // AuthApiService.postUser({
-    //   user_name: user_name.value,
-    //   password: password.value,
-    //   full_name: full_name.value,
-    //   nickname: nick_name.value,
-    // })
-    // .then(user => {
-    //     full_name.value = ''
-    //     nick_name.value = ''
-    //     user_name.value = ''
-    //     password.value = ''
-    //     this.props.onRegistrationSuccess()
-    // })
-    // .catch(res => {
-    //     this.setState({ error: res.error })
-    // })
+    console.log('registration form submitted')
+    console.log({first_name, last_name, user_name, email, password});
+    this.props.onRegistrationSuccess()
   }
 
   render() {
@@ -73,6 +56,14 @@ export default class RegistrationForm extends Component {
             type='text'
             required
             id='RegistrationForm__user_name'/>
+        </div>
+        <div className='email'>
+          <label htmlFor='RegistrationForm__email'>Email *</label>
+          <input
+            name='email'
+            type='email'
+            required
+            id='RegistrationForm__email'/>
         </div>
         <div className='password'>
           <label htmlFor='RegistrationForm__password'>Password *{/* <Required /> */}</label>
