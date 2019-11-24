@@ -14,8 +14,8 @@ import './mainForm2.css'
 import './slideshow.css'
 import TripsApiService from './services/users-api-service'
 import TokenService from './services/token-service'
-// import PrivateRoute from '../Utils/PrivateRoute'
-// import PublicOnlyRoute from '../Utils/PublicOnlyRoute'
+// import PrivateRoute from './composition/Utils/PrivateRoute'
+// import PublicOnlyRoute from './composition/Utils/PublicOnlyRoute'
 
 class App extends Component {
  
@@ -29,7 +29,6 @@ class App extends Component {
     }
     this.loggingIn = this.loggingIn.bind(this)
     this.logginOut = this.logginOut.bind(this)
-    // this.updateStore = this.updateStore.bind(this)
     this.addTrip= this.addTrip.bind(this)
   }
   retrieveTheInfos = () => {
@@ -113,19 +112,6 @@ class App extends Component {
                 path={'/newtrip'}
                 component={NewTripPage}
               />
-
-              {/* <PublicOnlyRoute
-                path={'/login'}
-                component={LoginPage}
-              />
-              <PublicOnlyRoute
-                path={'/register'}
-                component={RegistrationPage}
-              />
-              <PrivateRoute
-                path={'/article/:articleId'}
-                component={ArticlePage}
-              /> */}
               <Route
                 component={NotFoundPage}
               />

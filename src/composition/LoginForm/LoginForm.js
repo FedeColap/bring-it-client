@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import ApiContext from '../../ApiContext';
 import TokenService from '../../services/token-service'
-// import AuthApiService from '../../services/auth-api-service'
-// import { Button, Input } from '../Utils/Utils'
+import AuthApiService from '../../services/auth-api-service'
+
 
 export default class LoginForm extends Component {
   static contextType = ApiContext;
@@ -16,20 +16,40 @@ export default class LoginForm extends Component {
     error: null
   }
 
-    handleSubmitJwtAuth = e => {
-        e.preventDefault()
-        this.setState({ error: null })
-        const { user_name, password } = e.target
-        // const user_name = e.target.user_name.value;
-        // const password = e.target.password.value;
-        // console.log('login form submitted')
-        // console.log({user_name, password});
-        TokenService.saveAuthToken(
-          TokenService.makeBasicAuthToken(user_name.value, password.value)
-        )  
+  handleSubmitJwtAuth = e => {
+    e.preventDefault()
+    this.setState({ error: null })
+    const { user_name, password } = e.target
+    
+    AuthApiService.postLogin({
+        user_name: user_name.value,
+        password: password.value,
+    })
+    .then(res => {
+        user_name.value = ''
+        password.value = ''
+        TokenService.saveAuthToken(res.authToken)
         this.props.onLoginSuccess()
-        this.context.loggingIn()
-    }
+    })
+    .catch(res => {
+        this.setState({ error: res.error })
+    })
+  }
+
+    // handleSubmitJwtAuth = e => {
+    //     e.preventDefault()
+    //     this.setState({ error: null })
+    //     const { user_name, password } = e.target
+    //     // const user_name = e.target.user_name.value;
+    //     // const password = e.target.password.value;
+    //     // console.log('login form submitted')
+    //     // console.log({user_name, password});
+    //     TokenService.saveAuthToken(
+    //       TokenService.makeBasicAuthToken(user_name.value, password.value)
+    //     )  
+    //     this.props.onLoginSuccess()
+    //     this.context.loggingIn()
+    // }
 
   render() {
     const { error } = this.state
