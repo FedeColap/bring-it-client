@@ -6,7 +6,7 @@ const TripsApiService = {
   getTrips() {
     return fetch(`${config.API_ENDPOINT}/trips`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
     .then(res =>
@@ -19,7 +19,7 @@ const TripsApiService = {
   getUsers() {
     return fetch(`${config.API_ENDPOINT}/users`, {
       headers: {
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
     })
       .then(res =>
@@ -34,7 +34,7 @@ const TripsApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({
         first_name: first_name,
@@ -56,7 +56,7 @@ const TripsApiService = {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'authorization': `basic ${TokenService.getAuthToken()}`,
+        'authorization': `bearer ${TokenService.getAuthToken()}`,
       },
       body: JSON.stringify({ 
         country: country,

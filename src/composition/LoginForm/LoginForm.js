@@ -26,10 +26,11 @@ export default class LoginForm extends Component {
         password: password.value,
     })
     .then(res => {
-        user_name.value = ''
-        password.value = ''
+        // user_name.value = ''
+        // password.value = ''
         TokenService.saveAuthToken(res.authToken)
         this.props.onLoginSuccess()
+        this.context.loggingIn()
     })
     .catch(res => {
         this.setState({ error: res.error })
@@ -37,19 +38,21 @@ export default class LoginForm extends Component {
   }
 
     // handleSubmitJwtAuth = e => {
-    //     e.preventDefault()
-    //     this.setState({ error: null })
-    //     const { user_name, password } = e.target
-    //     // const user_name = e.target.user_name.value;
-    //     // const password = e.target.password.value;
-    //     // console.log('login form submitted')
-    //     // console.log({user_name, password});
-    //     TokenService.saveAuthToken(
-    //       TokenService.makeBasicAuthToken(user_name.value, password.value)
-    //     )  
-    //     this.props.onLoginSuccess()
-    //     this.context.loggingIn()
-    // }
+        // e.preventDefault()
+        // this.setState({ error: null })
+        // const { user_name, password } = e.target
+        // const user_name = e.target.user_name.value;
+        // const password = e.target.password.value;
+        // console.log('login form submitted')
+        // console.log({user_name, password});
+
+        // TokenService.saveAuthToken(
+        //   TokenService.makeBasicAuthToken(user_name.value, password.value)
+        // )  
+        // this.props.onLoginSuccess()
+        
+        // this.context.loggingIn()
+    //}
 
   render() {
     const { error } = this.state
