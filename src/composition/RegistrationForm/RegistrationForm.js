@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import AuthApiService from '../../services/auth-api-service'
+import { is } from '@babel/types'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -9,15 +11,40 @@ export default class RegistrationForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    // const { first_name, last_name, user_name, email, password } = ev.target
-    const first_name = e.target.first_name.value;
-    const last_name = e.target.last_name.value;
-    const user_name = e.target.user_name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    console.log('registration form submitted')
-    console.log({first_name, last_name, user_name, email, password});
-    this.props.onRegistrationSuccess()
+    
+    const { first_name, last_name, user_name, email, password, repeat_password } = e.target
+
+    this.setState({ error: null })
+    // const first_name = e.target.first_name.value;
+    // const last_name = e.target.last_name.value;
+    // const user_name = e.target.user_name.value;
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
+    // console.log('registration form submitted')
+    // console.log({first_name, last_name, user_name, email, password});
+    AuthApiService.postUser({
+      first_name: first_name.value,
+      last_name: last_name.value,
+      user_name: user_name.value,
+      email: email.value,
+      password: password.value,
+      repeat_password: repeat_password.value,
+    })
+    .then(user => {
+      first_name.value = ''
+      last_name.value = ''
+      user_name.value = ''
+      email.value = ''
+      password.value = ''
+      repeat_password.value = ''
+      this.props.onRegistrationSuccess()
+  })
+
+  .catch(res => {
+      this.setState({ error: res.error })
+  })
+
+    // this.props.onRegistrationSuccess()
   }
 
   render() {
@@ -33,7 +60,7 @@ export default class RegistrationForm extends Component {
         <fieldset>
         <div className="registration__hint">* required field</div>
         <div className='first_name'>
-          <label htmlFor='RegistrationForm__first_name'>First name * {/* <Required /> */}</label>
+          <label htmlFor='RegistrationForm__first_name'>First name * </label>
           <input
             name='first_name'
             type='text'
@@ -42,7 +69,7 @@ export default class RegistrationForm extends Component {
 
         </div>
         <div className='last_name'>
-          <label htmlFor='RegistrationForm__last_name'>Last name *{/* <Required /> */}</label>
+          <label htmlFor='RegistrationForm__last_name'>Last name *</label>
           <input
             name='last_name'
             type='text'
@@ -66,7 +93,7 @@ export default class RegistrationForm extends Component {
             id='RegistrationForm__email'/>
         </div>
         <div className='password'>
-          <label htmlFor='RegistrationForm__password'>Password *{/* <Required /> */}</label>
+          <label htmlFor='RegistrationForm__password'>Password *</label>
           <input
             name='password'
             type='password'
@@ -74,12 +101,12 @@ export default class RegistrationForm extends Component {
             id='RegistrationForm__password'/>
         </div>
         <div className='repeat-password'>
-         <label htmlFor="RegistrationForm__repeatPassword">Repeat Password *</label>
+         <label htmlFor="RegistrationForm__repeat_password">Repeat Password *</label>
          <input 
             type="password"
-            name="repeatPassword" 
+            name="repeat_password" 
             required
-            id="repeatPassword"/>
+            id="repeat_password"/>
        </div>
        </fieldset>  
         <button  className="butSub" type='submit'>

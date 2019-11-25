@@ -5,8 +5,9 @@ export default class NotFoundPage extends Component {
   render() {
     return (
       <section className='NotFoundPage'>
-        <h2>404 - Page not found</h2>
-        <p>Try going back to your previous page.</p>
+        <img className ="boh" src={require("./ransie4.jpg")} alt="perplexed picture" />
+        <h2>Sorry, this is a dead end!</h2>
+        <p>Try going back to another page.</p>
       </section>
     )
   }

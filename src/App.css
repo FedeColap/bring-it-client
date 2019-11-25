@@ -57,6 +57,13 @@ button {
 a {
     text-decoration: none;
 }
+.NotFoundPage {
+    text-align: center;
+}
+.boh {
+    width: 80%;
+    margin: auto;
+}
 
 button .navInteraction {
     margin-left: 30px;
