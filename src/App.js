@@ -14,8 +14,9 @@ import './mainForm2.css'
 import './slideshow.css'
 import TripsApiService from './services/users-api-service'
 import TokenService from './services/token-service'
-// import PrivateRoute from './composition/Utils/PrivateRoute'
-// import PublicOnlyRoute from './composition/Utils/PublicOnlyRoute'
+import AuthApiService from './services/auth-api-service'
+
+
 
 class App extends Component {
  
@@ -43,9 +44,8 @@ class App extends Component {
   }
   
   componentDidMount() {
-    this.retrieveTheInfos()
+    this.retrieveTheInfos()  
   }
-  
 
   loggingIn () {
     console.log('loggingIn!')

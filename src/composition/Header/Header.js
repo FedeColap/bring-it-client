@@ -12,17 +12,12 @@ export default class Header extends Component {
         console.log('performing logging out')
         this.context.logginOut()
         TokenService.clearAuthToken()
-        // const { history } = this.context.value.history
-        // console.log(history)
-        // history.push('/')
-        // this.props.history.push('/')
     }
     renderLogoutLink() {
         return (
           <div className='Header__logged-in'>
             <Link to='/newtrip'><button>New Trip</button></Link>
             <Link to='/' onClick={this.handleLogoutClick}><button>Logout</button></Link>
-            {/* <button onClick={this.handleLogoutClick}>Logout</button> */}
           </div>
         )  
       }
@@ -44,10 +39,6 @@ export default class Header extends Component {
                     {TokenService.hasAuthToken() 
                       ? this.renderLogoutLink()
                       : this.renderLoginLink()}
-                    {/* {this.context.isLogged
-                    ? this.renderLogoutLink()
-                    : this.renderLoginLink()} */}
-
                 </div> 
             </nav>
             
