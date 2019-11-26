@@ -33,13 +33,9 @@ export default class NewTripForm extends Component {
     checkCountry = (e) => {
       e.preventDefault();
       const externalUrl = `https://restcountries.eu/rest/v2/name/${this.state.country}`;
-        console.log(externalUrl);
 
         fetch(externalUrl)
           .then(response => {
-            console.log(typeof(response))
-            console.log(response.status)
-            console.log(response)
             if (response.ok) {
               return response.json();
             } else {alert('Could not find the Country.. did you spell it correctly?') }
@@ -48,7 +44,6 @@ export default class NewTripForm extends Component {
             this.setState({
               country: responseJson[0].name
             })
-            console.log(this.state.country)
             this.passTheInfos(e);
           })
           .catch(err => {
@@ -59,7 +54,6 @@ export default class NewTripForm extends Component {
     passTheInfos = (e) => {
         e.preventDefault()
         this.setState({ error: null })
-        // const user_id = this.state.user_id;
         const newCountry = this.state.country;
         const newMonth = this.state.month;
         TripsApiService.postNewTrip(newCountry, newMonth)

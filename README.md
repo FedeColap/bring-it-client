@@ -21,3 +21,11 @@ If you want to explore the app, please use these credentials:
 #### Nickname: Eric
 
 #### Password: G0d0dpassw0rd24!
+
+___
+
+### Screenshots
+
+![welcome page](landing.png)
+![registration form](register.png)
+![search results](results.png)

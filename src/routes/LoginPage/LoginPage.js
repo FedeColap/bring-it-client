@@ -7,16 +7,6 @@ import ApiContext from '../../ApiContext';
 export default class LoginPage extends Component {
   static contextType = ApiContext;
 
-  // state = {
-  //   isLogged: false
-  // }
-
-//   handleLoginSuccess = () => {
-//     const { location, history } = this.props
-//     const destination = (location.state || {}).from || '/'
-//     history.push(destination)
-//   }
-
     handleLoginSuccess = () => {
         const { history } = this.props
         console.log(history)

@@ -9,7 +9,6 @@ export default class Header extends Component {
 
     handleLogoutClick = e => {
         // e.preventDefault() DO NOT PUT IT, AS IT STOPS THE <LINK> ROUTE
-        console.log('performing logging out')
         this.context.logginOut()
         TokenService.clearAuthToken()
     }

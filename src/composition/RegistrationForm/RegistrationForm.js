@@ -32,12 +32,9 @@ export default class RegistrationForm extends Component {
       repeat_password.value = ''
       this.props.onRegistrationSuccess()
   })
-
   .catch(res => {
       this.setState({ error: res.error })
   })
-
-    // this.props.onRegistrationSuccess()
   }
 
   render() {

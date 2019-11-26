@@ -47,19 +47,14 @@ class App extends Component {
   }
 
   loggingIn () {
-    console.log('loggingIn!')
     this.setState({
       isLogged: true
     })
-    console.log(this.state.isLogged)
   }
   logginOut () {
-    console.log('get outta here!')
     this.setState({
       isLogged: false
-    })
-    console.log(this.state.isLogged)
-        
+    })     
   }
   addTrip = () => {
     //I AM NOT setState[...trips, NewTrip] BECAUSE IT RETRIEVES THE INFO PARTIALLY (BASED ON THE POST F THE TRIP). 
@@ -96,7 +91,6 @@ class App extends Component {
               />
               <Route
                 path={'/login'}
-                // component={LoginPage}
                 render={(props) => <LoginPage {...props} />}
               />
               <Route

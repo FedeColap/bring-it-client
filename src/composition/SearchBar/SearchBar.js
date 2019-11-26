@@ -6,12 +6,6 @@ export default class SearchBar extends Component {
 
   state = { error: null }
 
-    // performResearch = e => {
-    //     e.preventDefault()
-    //     this.setState({ error: null })
-    //     console.log('searching for results')
-    // }
-
     render() {
         return (
           <div className="SearchBar">

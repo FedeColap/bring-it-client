@@ -9,18 +9,13 @@ class FilterableList extends Component {
   render() {
 
     let answer = "Sorry, no uses are available for your criteria";
-    
-    // const store = this.props.store
-    console.log(this.props)
-    // this context does not render the latest NewTrip submission
-    console.log(this.context.store)
 
     const store = this.props.store
     
         .filter(file => 
         file.country.includes(this.props.country)
         && (file.month === 'all' || file.month === this.props.month));
-        // console.log(list)
+
 
     let listA = store.map((file, key) => <ListItem {...file} key={key} />);
         

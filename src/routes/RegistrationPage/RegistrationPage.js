@@ -3,16 +3,7 @@ import RegistrationForm from '../../composition/RegistrationForm/RegistrationFor
 import { Link } from 'react-router-dom'
 
 export default class RegistrationPage extends Component {
-  static defaultProps = {
-    history: {
-      push: () => {},
-    },
-  }
 
-  // handleRegistrationSuccess = user => {
-  //   const { history } = this.props
-  //   history.push('/login')
-  // }
   handleRegistrationSuccess = () => {
     const { history } = this.props
     history.push('/login')
