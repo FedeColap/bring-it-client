@@ -56,7 +56,9 @@ export default class LoginForm extends Component {
           <input
             required
             name='user_name'
-            id='LoginForm__user_name'>
+            id='LoginForm__user_name'
+            aria-label="Enter your Nickname"
+            aria-required="true">
           </input>
         </div>
         <div className='password'>
@@ -67,7 +69,9 @@ export default class LoginForm extends Component {
             required
             name='password'
             type='password'
-            id='LoginForm__password'>
+            id='LoginForm__password'
+            aria-label="Enter your password"
+            aria-required="true">
           </input>
         </div>
       </fieldset>  

@@ -55,7 +55,9 @@ export default class RegistrationForm extends Component {
             name='first_name'
             type='text'
             required
-            id='RegistrationForm__first_name' />
+            id='RegistrationForm__first_name'
+            aria-label="Enter your first name"
+            aria-required="true"  />
 
         </div>
         <div className='last_name'>
@@ -64,7 +66,9 @@ export default class RegistrationForm extends Component {
             name='last_name'
             type='text'
             required
-            id='RegistrationForm__last_name' />
+            id='RegistrationForm__last_name'
+            aria-label="Enter your last name"
+            aria-required="true"  />
         </div>
         <div className='user_name'>
           <label htmlFor='RegistrationForm__user_name'>Nickname *</label>
@@ -72,7 +76,9 @@ export default class RegistrationForm extends Component {
             name='user_name'
             type='text'
             required
-            id='RegistrationForm__user_name'/>
+            id='RegistrationForm__user_name'
+            aria-label="Enter your nickname"
+            aria-required="true" />
         </div>
         <div className='email'>
           <label htmlFor='RegistrationForm__email'>Email *</label>
@@ -80,7 +86,9 @@ export default class RegistrationForm extends Component {
             name='email'
             type='email'
             required
-            id='RegistrationForm__email'/>
+            id='RegistrationForm__email'
+            aria-label="Enter your email address"
+            aria-required="true" />
         </div>
         <div className='password'>
           <label htmlFor='RegistrationForm__password'>Password *</label>
@@ -88,7 +96,11 @@ export default class RegistrationForm extends Component {
             name='password'
             type='password'
             required
-            id='RegistrationForm__password'/>
+            id='RegistrationForm__password'
+            aria-label="Enter a password"
+            aria-required="true"
+            aria-describedby="passwordConstraint" />
+            <div id="passwordConstraint">Password must be of 8 digits, 1 capital letter, 1 number and one special character</div>
         </div>
         <div className='repeat-password'>
          <label htmlFor="RegistrationForm__repeat_password">Repeat Password *</label>
@@ -96,7 +108,11 @@ export default class RegistrationForm extends Component {
             type="password"
             name="repeat_password" 
             required
-            id="repeat_password"/>
+            id="repeat_password"
+            aria-label="Confirm the password"
+            aria-required="true" 
+            aria-describedby="passwordrepConstraint"/>
+            <div id="passwordrepConstraint">Repeat password must match the password</div>
        </div>
        </fieldset>  
         <button  className="butSub" type='submit'>
