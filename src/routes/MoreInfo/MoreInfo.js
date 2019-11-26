@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 export default class MoreInfo extends Component {
+
+    //https://mathiasbynens.github.io/rel-noopener/
+    
     render() {
         return (
            <section>
@@ -12,7 +15,7 @@ export default class MoreInfo extends Component {
                 <p>Please read carefully our Code of conduct, as follows:</p>
                 <ul>
                     <li>Each contact is allowed solely for the purpose of bringing / obtaining small goods; any other form of bother / harassment is strictly forbidden, and will cost the expulsion from the Platform.</li>
-                    <li>Only legal goods can be the object of the transactions: this means that, for example, meat, plants, animals, drugs, arms are not allowed. For a complete list of the forbidden items, please refer to this <a href="https://www.cbp.gov/travel/us-citizens/know-before-you-go/prohibited-and-restricted-items" target="_blank">U.S. Custom and Border Protection Page</a></li>
+                    <li>Only legal goods can be the object of the transactions: this means that, for example, meat, plants, animals, drugs, arms are not allowed. For a complete list of the forbidden items, please refer to this <a href="https://www.cbp.gov/travel/us-citizens/know-before-you-go/prohibited-and-restricted-items" target="_blank" rel="noopener noreferrer">U.S. Custom and Border Protection Page</a></li>
                     <li>Transactions are allowed only for small quantities of goods, which means, personal use. This App is not a way to bypass duties and other commercial obligations.</li>
                 </ul> 
                 <Link to='/'><p  className="butCan" type="cancel">Go to Welcome Page</p></Link> 

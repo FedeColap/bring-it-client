@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import ApiContext from '../../ApiContext';
 import TripsApiService from '../../services/users-api-service.js'
-import TokenService from '../../services/token-service'
-// import AuthApiService from '../../services/auth-api-service'
-// import { Button, Input } from '../Utils/Utils'
+
 
 export default class NewTripForm extends Component {
   static contextType = ApiContext;
@@ -70,9 +68,6 @@ export default class NewTripForm extends Component {
           this.props.onSubmitSuccess()
         })
         .catch(this.context.setError)
-
-        // this.context.updateStore(newCountry, newMonth )
-        // this.props.onSubmitSuccess()
     }
 
   render() {

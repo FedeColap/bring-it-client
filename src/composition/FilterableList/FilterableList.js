@@ -6,11 +6,6 @@ class FilterableList extends Component {
 
   static contextType = ApiContext;
 
-  constructor(props) {
-    super(props);
-    
-  }
-
   render() {
 
     let answer = "Sorry, no uses are available for your criteria";

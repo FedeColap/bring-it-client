@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AuthApiService from '../../services/auth-api-service'
-import { is } from '@babel/types'
 
 export default class RegistrationForm extends Component {
   static defaultProps = {
@@ -15,13 +14,7 @@ export default class RegistrationForm extends Component {
     const { first_name, last_name, user_name, email, password, repeat_password } = e.target
 
     this.setState({ error: null })
-    // const first_name = e.target.first_name.value;
-    // const last_name = e.target.last_name.value;
-    // const user_name = e.target.user_name.value;
-    // const email = e.target.email.value;
-    // const password = e.target.password.value;
-    // console.log('registration form submitted')
-    // console.log({first_name, last_name, user_name, email, password});
+
     AuthApiService.postUser({
       first_name: first_name.value,
       last_name: last_name.value,

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class FilterOptions extends Component {
   render() {
-    const { filterOption } = this.props;
+
     return (
       <div className="FilterOptions">
 
