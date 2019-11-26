@@ -1,4 +1,4 @@
-.registration__hint {
+.registration__hint, .red {
     color: DarkRed ;
 }
 main {
@@ -74,13 +74,13 @@ section a {
 /* for computers */
 @media screen and (min-width: 1400px) {
   fieldset {
-    width: 35%;
+    width: 50%;
 
   }
   section a {
-    width: 35%;
+    width: 50%;
 }  
     .butSub {
-        width: 35%;
+        width: 50%;
     }
 } 
