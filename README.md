@@ -9,9 +9,15 @@ You must be registered and comply to the *Code of counduct* in order to access t
 
 ___
 
+Link to the Live app: 
+
+### https://fedecolap-bring-it-app.now.sh
+
+___
+
 If you want to explore the app, please use these credentials: 
 #### DEMO-USER
 
-#### Nickname: **Eric**
+#### Nickname: Eric
 
-#### Password: **G0d0dpassw0rd24!**
+#### Password: G0d0dpassw0rd24!
