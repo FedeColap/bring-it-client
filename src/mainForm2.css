@@ -41,6 +41,9 @@ section a {
     width: 100%;
     height: 100px;
 }
+#emailWarning, #pwConstraint {
+    font-style: italic;
+}
 
 /*for the phones*/
 @media screen and (max-width: 510px) {
@@ -54,8 +57,6 @@ section a {
     section a {
         width: 100%;
     } 
-    
-    
 }
 /* for tablets */
 @media screen and (min-width: 510px) {
@@ -68,6 +69,9 @@ section a {
     }
     .butSub {
         width: 75%;
+    }
+    .red {
+        text-align: center;
     }
     
 }
@@ -82,5 +86,8 @@ section a {
 }  
     .butSub {
         width: 50%;
+    }
+    .red {
+        text-align: center;
     }
 } 

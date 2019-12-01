@@ -16,11 +16,16 @@
     display: flex;
     align-items: center;
     animation: slideshow 20s linear infinite;
+    -webkit-animation: slideshow 20s linear infinite;
   }
   .slide img {
     padding: 0 30px 0 30px;
   }
   @keyframes slideshow {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(-100%);}
+  }
+  @-webkit-keyframes slideshow {
     0% {transform: translateX(0);}
     100% {transform: translateX(-100%);}
   }

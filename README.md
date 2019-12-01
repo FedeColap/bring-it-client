@@ -22,6 +22,8 @@ If you want to explore the app, please use these credentials:
 
 #### Password: G0d0dpassw0rd24!
 
+If you want to see at least one result, please search for users traveling to Italy in the month of December
+
 ___
 
 ### Screenshots

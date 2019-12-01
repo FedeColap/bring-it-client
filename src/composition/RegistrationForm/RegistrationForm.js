@@ -82,25 +82,27 @@ export default class RegistrationForm extends Component {
         </div>
         <div className='email'>
           <label htmlFor='RegistrationForm__email'>Email *</label>
+          <p id="emailWarning" >This is an app created for demonstration purposes. Make sure you provide a fake email address (i.e. hallofake@fakemail.gb)</p>
           <input
             name='email'
             type='email'
             required
             id='RegistrationForm__email'
             aria-label="Enter your email address"
-            aria-required="true" />
+            aria-required="true"
+            aria-describedby="emailWarning" />
         </div>
         <div className='password'>
           <label htmlFor='RegistrationForm__password'>Password *</label>
+          <p id="pwConstraint" >Password must be longer than 8 characters, and must contain at least 1 capital letter, 1 number and 1 special character</p>
           <input
             name='password'
             type='password'
             required
             id='RegistrationForm__password'
             aria-label="Enter a password"
-            aria-required="true"
-            aria-describedby="passwordConstraint" />
-            <div id="passwordConstraint">Password must be of 8 digits, 1 capital letter, 1 number and one special character</div>
+            aria-required="true" 
+            aria-describedby="pwConstraint"/>
         </div>
         <div className='repeat-password'>
          <label htmlFor="RegistrationForm__repeat_password">Repeat Password *</label>
@@ -110,9 +112,7 @@ export default class RegistrationForm extends Component {
             required
             id="repeat_password"
             aria-label="Confirm the password"
-            aria-required="true" 
-            aria-describedby="passwordrepConstraint"/>
-            <div id="passwordrepConstraint">Repeat password must match the password</div>
+            aria-required="true" />
        </div>
        </fieldset>  
         <button  className="butSub" type='submit'>
