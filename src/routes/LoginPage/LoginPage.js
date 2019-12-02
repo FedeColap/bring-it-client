@@ -22,6 +22,8 @@ export default class LoginPage extends Component {
           loggingIn = {this.props.loggingIn}
         />
         <Link to='/'><p  className="butCan" type="cancel">Cancel</p></Link>
+        <p className="fakedata">Just wanna poke around? Use these credentials. <br /> 
+        Username: <strong>Eric</strong> - Password: <strong>G0d0dpassw0rd24!</strong></p>
       </section>
     )
   }

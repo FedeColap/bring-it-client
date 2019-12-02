@@ -1,4 +1,5 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+This Repo works with the Back-end Repo [bring-it-server](https://github.com/FedeColap/bring-it-server).
 
 ## Welcome to Bring it (Please)
 This app has been created using React, Node.js and PostgreSQL.

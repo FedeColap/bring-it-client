@@ -6,6 +6,12 @@ main {
     flex-direction: column;
     justify-content: center;
 }
+.fakedata {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 100px;
+}
 fieldset {
     align-self: center;
     border: solid 1px transparent;
@@ -47,6 +53,9 @@ section a {
 
 /*for the phones*/
 @media screen and (max-width: 510px) {
+    .fakedata {
+        width: 100%;
+    }
     fieldset {
         width: 100%;
         padding: 0;
@@ -56,10 +65,13 @@ section a {
     }
     section a {
         width: 100%;
-    } 
+    }
 }
 /* for tablets */
 @media screen and (min-width: 510px) {
+    .fakedata {
+        width: 75%;
+    }
     fieldset {
         width: 75%;
         margin-bottom: 30px;
@@ -77,6 +89,9 @@ section a {
 }
 /* for computers */
 @media screen and (min-width: 1400px) {
+    .fakedata {
+        width: 50%;
+    }
   fieldset {
     width: 50%;
 

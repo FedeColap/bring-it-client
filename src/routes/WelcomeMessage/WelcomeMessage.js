@@ -17,6 +17,7 @@ export default class WelcomeMessage extends Component {
               For a little surcharge over the regular price, or a small flat amount (your friend should be rewarded for his courtesy, after all!) you could have that item you wished for, straight from the Country of origin!</p>
               <p className="fancy welcome">This is Bring It (Please).</p>
               <Link to='/register'><p  className="butCan" type="cancel">Join our community!</p></Link> 
+              <Link to='/login'><p  className="butCan" type="cancel"> Click here to log in with a fake User</p></Link> 
            </section>
         )
     }
