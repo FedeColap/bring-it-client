@@ -12,7 +12,7 @@ export default class RegistrationPage extends Component {
   render() {
     return (
       <section className='RegistrationPage'>
-          <h1 className="fancy hform">Welcome! Please fill this form in order to join.</h1>
+          <h1 className="fancy hform">Welcome! Please sign up.</h1>
         <RegistrationForm
           onRegistrationSuccess={this.handleRegistrationSuccess}
         />

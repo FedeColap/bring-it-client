@@ -6,7 +6,7 @@ class SearchBox extends Component {
   render() {
     return (
       <div className="SearchBox">
-        <label htmlFor='SearchBox__country'>Which Country would you like some goods from?</label>
+        <label htmlFor='SearchBox__country'>Which country would you like some goods from?</label>
         <input 
             id='SearchBox__country'
             placeholder="Italy" 

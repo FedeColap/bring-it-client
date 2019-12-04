@@ -112,8 +112,8 @@ export default class SearchPage extends Component {
 
     return (
       <section className='SearchPage'>
-        <h1 className="fancy hform">Seach for available users</h1>
-        <h4>Please answer these question to find out if someone is traveling to a foreign Country and is available to bring you something back.</h4>
+        <h1 className="fancy hform">Search for available users</h1>
+        <h4>Please answer these question to find out if someone is traveling to a foreign country and is available to bring you something back.</h4>
         <fieldset>
         <SearchBar
           handleUpdate={term=>this.updateSearchTerm(term)}

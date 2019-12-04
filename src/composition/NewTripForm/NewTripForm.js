@@ -79,7 +79,7 @@ export default class NewTripForm extends Component {
         <fieldset>
           <div className='country'>
             <label htmlFor='NewTripForm__country'>
-              Which Country are you traveling to? 
+              Which country are you traveling to? 
             </label>
             <input
               type="text"

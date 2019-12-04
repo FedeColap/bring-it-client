@@ -16,7 +16,7 @@ export default class NewTripPage extends Component {
     return (
       <section className='LoginPage'>
         <h1 className="fancy hform">Enter a New Trip</h1>
-        <h4>Are you planning to travel abroad soon? That is great news! Let other people know that you are available to bring back some goods by submitting this form.</h4>
+        <h4>Are you planning to travel abroad soon? That is great news! Let other people know that you are available to bring back some goods.</h4>
         <NewTripForm
           onSubmitSuccess={this.handleSubmitSuccess}
 
