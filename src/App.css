@@ -35,7 +35,7 @@ body {
 .butCan a:hover {
     color: black;
 }
-.butCan p {
+p.butCan {
     line-height: 1.6;
 }
 button.butSub {
